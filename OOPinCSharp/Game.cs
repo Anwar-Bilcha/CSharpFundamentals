@@ -36,21 +36,23 @@ namespace OOPinCSharp
     public  interface IGame
     { public string PlayGame(string name);
     }
-    public interface IFootBallGame {  public string PlayFootBallGame(string name);}
-    public class SudoGame : IGame, IFootBallGame
+    public interface IFootBallGame
+    {
+        public string PlayFootBallGame(string name);
+    }
+    public class SudoGame : GameParent, IGame
     {   public SudoGame() { }
         public string PlayGame(string name)
         {
             return $"Hello Mr/s. {name.ToUpper()}, your Game has Started: ";
         }
-        public string PlayFootBallGame(string name)
-        {
-            return $"Hi {name} You have started playing a football game";
-        }
-        public static void MainD()
+            public string playfootballgame(string name)
+            {
+                return $"hi {name} you have started playing a football game";
+            }
+            public static void Mainz()
         {
             Console.WriteLine(new SudoGame().PlayGame("Anwar"));
-            Console.WriteLine(new SudoGame().PlayFootBallGame("Anwar"));
         }
     }  
 }

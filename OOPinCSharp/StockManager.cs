@@ -65,7 +65,7 @@ namespace OOPinCSharp
     // Program Execution
     class ExecutionClass
     {
-        static void Mainq(string[] args)
+        static void Msaain(string[] args)
         {
             StockManager stockManager = new StockManager();
             Product product3 = new Product(2, "Mobile Phone", 15);

@@ -156,14 +156,37 @@ namespace OOPinCSharp
             }
         }
     }
+    public static class SecurityHelper
+    {
+        public static string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                var bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(bytes);
+            }
+        }
+    }
     public class Program
     {
-        public static void bMain(string[] args)
+        public static void Maidn(string[] args)
         {
             var electronics = new Electronics(1, "Laptop", 60, 800.00M,34);
             var furniture = new Furniture(2, "Office Chair", 15, 150.00M, "Leather");
             var clothing = new Clothing(3, "T-shirt", 100, 20.00M, "M", "Red");
-
+            if(!DataValidator.isValidQuantity((double)electronics.Price))
+            {
+                Console.WriteLine($"item {nameof(electronics)} has {Messages.InvalidStockQuantity}");
+            }
+            else
+            {
+                Console.WriteLine(Messages.OperationSuccessful);
+            }
+            Console.WriteLine("Enter Password");
+            string inputPassword = Console.ReadLine();
+            Console.WriteLine("Your Hashed Password is: "+SecurityHelper.HashPassword(inputPassword.ToString()));
+            
+            
             //Warehouse warehouse2 = new();
             //warehouse2.StockItems = new List<StockItem>();
             //warehouse2.StockItems.Add(electronics);
@@ -181,11 +204,13 @@ namespace OOPinCSharp
                                                           where seedStockItem.Quantity >20
                                                           orderby seedStockItem.Quantity
                                                           select seedStockItem;
-
-
             foreach(var item in seedStockItemsHavingMorethanTenQuantity )
             {   
-               item.DisplayDetails();
+                if(AppConfig.isOrderInRange(item.Quantity, 1) || item.Quantity>AppConfig.MinStockQuantity)
+                {
+                    item.DisplayDetails();
+                }
+               
             }
             //SudoGame game = new();
             //Console.WriteLine(game.PlayGame("Anwar"));

@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPinCSharps
 {
-        public partial class Person { 
-            public string FirstName { get; set; } 
-            public string LastName { get; set; }
-            public void PrintName() {
-                Console.WriteLine($"{FirstName} {LastName}"); 
-            }
-        }
+       
      public partial class Person
     { public int Age { get; set; } 
         public void PrintAge()
