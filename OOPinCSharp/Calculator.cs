@@ -108,7 +108,7 @@ namespace OOPinCSharp
         {
             return a + b;
         }
-        public static void Main(string[] args)
+        public static void QMain(string[] args)
         {
             //DiscountCalCulator calc = new DiscountCalCulator("Sugar", 2000);
             //Console.WriteLine(calc.calculateDiscount());

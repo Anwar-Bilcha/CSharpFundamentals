@@ -39,7 +39,7 @@ namespace OOPinCSharp
     public class Electronics : StockItem
     {
         public int WarrantyPeriod { get; set; } // Warranty in months
-
+        
         public Electronics(int itemId, string itemName, int quantity, decimal price, int warrantyPeriod)
             : base(itemId, itemName, quantity, price)
         {
